@@ -25,7 +25,7 @@ def contact(request):
     context = {
         "blog": Blog.objects.first(),
     }
-
+    
     if request.method == "POST":
         print(request.POST['nome'])
         print(request.POST['email'])
@@ -33,8 +33,18 @@ def contact(request):
         print(request.POST['mensagem'])
         print(request.POST['cidade'])
         
+        context['erro'] = {}
         if not request.POST['nome']:
-            context['errp'] = "O usuario não digitou o nome"
+            context['erro']['nome'] = True
+        if not request.POST['email']:
+            context['erro']['email'] = True
+        if not request.POST['telefone']:
+            context['erro']['telefone'] = True
+        if not request.POST['cidade']:
+            context['erro']['cidade'] = True
+        if not request.POST['mensagem']:
+            context['erro']['mensagem'] = True
+            
             return render(request, "contact.html", context)
 
         mensagem = Mensagem(nome = request.POST['nome'],
@@ -48,3 +58,9 @@ def contact(request):
         return render(request, "contact.html", context)
     else:
         return render(request, "contact.html", context)
+    
+def mensagens(request):
+    context = {
+        "mensagem": Mensagem.objects.all()
+    }
+    return render(request, "mensagens.html", context)

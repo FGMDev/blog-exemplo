@@ -28,28 +28,27 @@
                         <form id="contactForm" method="POST">
                             {% csrf_token %}
                             <div class="form-floating">
-                                <input class="form-control" id="name" name="nome" type="text" placeholder="Digite seu nome..."/>
+                                <input class="form-control {% if erro.nome %}is-invalid{% endif %}" id="name" name="nome" type="text" placeholder="Digite seu nome..."/>
                                 <label for="name">Nome</label>
                                 <div class="invalid-feedback">O nome é requirido.</div>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="email" name="email" type="email" placeholder="Digite seu email..."/>
+                                <input class="form-control {% if erro.email %}is-invalid{% endif %}" id="email" name="email" type="email" placeholder="Digite seu email..."/>
                                 <label for="email">Endereço de Email</label>
                                 <div class="invalid-feedback">O email é requirido.</div>
-                                <div class="invalid-feedback">Email não é valido.</div>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="numero" name="telefone" type="tel" placeholder="Digite seu número de telefone..."/>
+                                <input class="form-control {% if erro.telefone %}is-invalid{% endif %}" id="numero" name="telefone" type="tel" placeholder="Digite seu número de telefone..."/>
                                 <label for="phone">Número</label>
                                 <div class="invalid-feedback">O número do celular é requerido.</div>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="cidade" name="cidade" type="cidade" placeholder="Digite seu número de telefone..."/>
-                                <label for="phone">Cidade</label>
-                                <div class="invalid-feedback">O número do celular é requerido.</div>
+                                <input class="form-control {% if erro.cidade %}is-invalid{% endif %}" id="cidade" name="cidade" type="cidade" placeholder="Digite seu número de telefone..."/>
+                                <label for="cidade">Cidade</label>
+                                <div class="invalid-feedback">A cidade é reqerida.</div>
                             </div>
                             <div class="form-floating">
-                                <textarea class="form-control" id="menssagem" name="mensagem" placeholder="Digite sua mensagem aqui..." style="height: 12rem"></textarea>
+                                <textarea class="form-control {% if erro.mensagem %}is-invalid{% endif %}" id="menssagem" name="mensagem" placeholder="Digite sua mensagem aqui..." style="height: 12rem"></textarea>
                                 <label for="message">Mensagem</label>
                                 <div class="invalid-feedback">A mensagem é requirida.</div>
                             </div>
