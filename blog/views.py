@@ -31,11 +31,17 @@ def contact(request):
         print(request.POST['email'])
         print(request.POST['telefone'])
         print(request.POST['mensagem'])
+        print(request.POST['cidade'])
+        
+        if not request.POST['nome']:
+            context['errp'] = "O usuario não digitou o nome"
+            return render(request, "contact.html", context)
 
         mensagem = Mensagem(nome = request.POST['nome'],
                             email = request.POST['email'],
                             telefone = request.POST['telefone'],
-                            mensagem = request.POST['mensagem'])
+                            mensagem = request.POST['mensagem'],
+                            cidade = request.POST['cidade'])
         
         mensagem.save()
 
