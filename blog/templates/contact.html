@@ -27,41 +27,14 @@
                     <div class="my-5">
                         <form id="contactForm" method="POST">
                             {% csrf_token %}
+
+                            {% for field in form %}
                             <div class="form-floating">
-                                <input class="form-control {% if erro.nome %}is-invalid{% endif %}" id="name" name="nome" type="text" placeholder="Digite seu nome..."/>
-                                <label for="name">Nome</label>
-                                <div class="invalid-feedback">O nome é requirido.</div>
+                                {{ field.errors }}
+                                {{ field }}
+                                {{ field.label_tag }}
                             </div>
-                            <div class="form-floating">
-                                <input class="form-control {% if erro.email %}is-invalid{% endif %}" id="email" name="email" type="email" placeholder="Digite seu email..."/>
-                                <label for="email">Endereço de Email</label>
-                                <div class="invalid-feedback">O email é requirido.</div>
-                            </div>
-                            <div class="form-floating">
-                                <input class="form-control {% if erro.telefone %}is-invalid{% endif %}" id="numero" name="telefone" type="tel" placeholder="Digite seu número de telefone..."/>
-                                <label for="phone">Número</label>
-                                <div class="invalid-feedback">O número do celular é requerido.</div>
-                            </div>
-                            <div class="form-floating">
-                                <input class="form-control {% if erro.cidade %}is-invalid{% endif %}" id="cidade" name="cidade" type="cidade" placeholder="Digite seu número de telefone..."/>
-                                <label for="cidade">Cidade</label>
-                                <div class="invalid-feedback">A cidade é reqerida.</div>
-                            </div>
-                            <div class="form-floating">
-                                <textarea class="form-control {% if erro.mensagem %}is-invalid{% endif %}" id="menssagem" name="mensagem" placeholder="Digite sua mensagem aqui..." style="height: 12rem"></textarea>
-                                <label for="message">Mensagem</label>
-                                <div class="invalid-feedback">A mensagem é requirida.</div>
-                            </div>
-                            <br />
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erro ao enviar sua mensagem.</div></div>
+                            {% endfor %}
                             
                             <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Enviar</button>
                         </form>
