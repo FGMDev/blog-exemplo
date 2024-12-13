@@ -35,3 +35,9 @@ class Mensagem(models.Model):
 
     def __str__(self):
         return f"{self.nome} - {self.email}"
+
+class User(models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    cidade = models.CharField(max_length=100, blank=True)
+    cpf = models.CharField(max_length=100, blank=True)
