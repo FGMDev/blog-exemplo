@@ -27,16 +27,18 @@ def contact(request):
     context = {
         "blog": Blog.objects.first(),
     }
-    
+
     if request.method == "POST":
         form = MensagemForm(request.POST)
         if form.is_valid():
             if form.is_valid():
                 form.save()
-        return render(request, "contact.html", context)
+                return redirect('mensagens')
+            else: context["form"] = form
     else:
         context["form"] = MensagemForm()
-        return render(request, "contact.html", context)
+        
+    return render(request, "contact.html", context)
     
 def mensagens(request):
     context = {
@@ -72,8 +74,8 @@ def deletar_mensagem(request, mensagem_id):
     else:
         return render(request, "delete_contact.html", context)
 
-def register(request, context):
+def register(request):
     context = {
-        "blog": Blog.objects.first,
-        "register": MensagemForm(initial=model_to_dict(register))
+        "blog": Blog.objects.first(),
     }
+    return render(request, "register.html", context)

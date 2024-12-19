@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% load static crispy_forms_tags %}
+{% load static %}
 
 {% block header %}
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
+<header class="masthead" style="background-image: url('https:/picsum.photos/1920/1080')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Contato</h1>
-                    <span class="subheading">Dúvidas? Eu tenho respostas.</span>
+                    <h1>Cadastro</h1>
+                    <span class="subheading">Cadastre-se</span>
                 </div>
             </div>
         </div>
@@ -18,84 +18,41 @@
 {% endblock header %}
 
 {% block content %}
-    <!-- Main Content-->
-    <main class="mb-4">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <p>Quer entrar em contanto? Envie-me uma mensagem e responderei assim que possível.</p>
-                    <div class="my-5">
-                        <form id="contactForm" method="POST">
-                            {% csrf_token %}
-                            <form class="row g-3 needs-validation" novalidate>
-                                <div class="col-md-4">
-                                  <label for="validationCustom01" class="form-label">First name</label>
-                                  <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-                                  <div class="valid-feedback">
-                                    Looks good!
-                                  </div>
-                                </div>
-                                <div class="col-md-4">
-                                  <label for="validationCustom02" class="form-label">Last name</label>
-                                  <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-                                  <div class="valid-feedback">
-                                    Looks good!
-                                  </div>
-                                </div>
-                                <div class="col-md-4">
-                                  <label for="validationCustomUsername" class="form-label">Username</label>
-                                  <div class="input-group has-validation">
-                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                      Please choose a username.
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <label for="validationCustom03" class="form-label">City</label>
-                                  <input type="text" class="form-control" id="validationCustom03" required>
-                                  <div class="invalid-feedback">
-                                    Please provide a valid city.
-                                  </div>
-                                </div>
-                                <div class="col-md-3">
-                                  <label for="validationCustom04" class="form-label">State</label>
-                                  <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option>...</option>
-                                  </select>
-                                  <div class="invalid-feedback">
-                                    Please select a valid state.
-                                  </div>
-                                </div>
-                                <div class="col-md-3">
-                                  <label for="validationCustom05" class="form-label">Zip</label>
-                                  <input type="text" class="form-control" id="validationCustom05" required>
-                                  <div class="invalid-feedback">
-                                    Please provide a valid zip.
-                                  </div>
-                                </div>
-                                <div class="col-12">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                    <label class="form-check-label" for="invalidCheck">
-                                      Agree to terms and conditions
-                                    </label>
-                                    <div class="invalid-feedback">
-                                      You must agree before submitting.
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-12">
-                                  <button class="btn btn-primary" type="submit">Submit form</button>
-                                </div>
-                              </form>
-                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Enviar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div class="container mt-5">
+    <!-- Dados da Pessoa -->
+    <form>
+      <div class="row mb-4">
+        <h5>Dados da Pessoa</h5>
+        <div class="col-md-6">
+          <label for="nomeCompleto" class="form-label">Nome completo</label>
+          <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome completo">
         </div>
-    </main>
+        <div class="col-md-6">
+          <label for="cpf" class="form-label">CPF</label>
+          <input type="text" class="form-control" id="cpf" placeholder="CPF">
+        </div>
+        <div class="col-md-6 mt-3">
+          <label for="rg" class="form-label">Email</label>
+          <input type="text" class="form-control" id="Email" placeholder="Email">
+        </div>
+        <div class="col-md-6 mt-3">
+          <label for="emailCobranca" class="form-label">Confirmar Email</label>
+          <input type="email" class="form-control" id="confimarEmail" placeholder="Confirmar Email">
+        </div>
+        <div class="col-md-12 mt-3">
+          <label for="telefoneFixo" class="form-label">Endereço</label>
+          <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="rg" class="form-label">Senha</label>
+            <input type="text" class="form-control" id="senha" placeholder="Senha">
+          </div>
+          <div class="col-md-6 mt-3">
+            <label for="emailCobranca" class="form-label">Confirmar Senha</label>
+            <input type="email" class="form-control" id="confimarSenha" placeholder="Confirmar Senha">
+          </div>
+      </div>
+      
+      <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Enviar</button>
+    </form>
 {% endblock content %}
